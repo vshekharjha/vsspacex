@@ -3,10 +3,10 @@
   "scripts": {
     "webpack": "webpack -d",
     "dev": "nodemon -e css,js,jsx,ejs,cjs,ts,json,mjs script.js",
-    "webpack-production": "NODE_ENV=production webpack -p",
-    "babel-production": "NODE_ENV=production COMPILER_ENV=server babel --out-dir dist --config-file ./.babelrc.server.json src",
+    "webpack-production": "SET NODE_ENV=production webpack -p",
+    "babel-production": "SET NODE_ENV=production COMPILER_ENV=server babel --out-dir dist --config-file ./.babelrc.server.json src",
     "start": "node -r esm dist/server.js",
-    "build": "npm run webpack-production && npm run babel-production",
+    "build": "cross-env SET NODE_ENV=production & npm run webpack -p && npm run babel-production",
     "test:lint": "eslint -c .eslintrc.js --ext .ts,.tsx",
     "prettify": "prettier --config .prettierrc.yaml --write '{,!(node_modules)/**/}*.{js,ts,tsx,json}'",
     "predeploy": "npm run build",
@@ -52,6 +52,7 @@
   "dependencies": {
     "axios": "^0.20.0",
     "compression": "^1.7.4",
+    "cross-env": "^7.0.2",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "lodash": "^4.17.20",
