@@ -1,0 +1,161 @@
+.wrapper > * {
+  padding: 10px;
+  flex: 1 100%;
+}
+
+.header {
+  text-align: left;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.main {
+  text-align: left;
+}
+
+.aside-1 {
+  text-align: center;
+}
+
+@media all and (min-width: 300px) {
+  .aside {
+    flex: 1 0 0;
+  }
+  .main {
+    flex: auto;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+  .tilesCard {
+    width: 90%;
+    height: 315px;
+    margin: 10px 0px;
+    padding: 20px;
+    float: left;
+    background-color: white;
+  }
+}
+
+@media all and (min-width: 700px) {
+  .aside {
+    flex: 1 0 0;
+  }
+  .main {
+    flex: 2;
+    display: block;
+  }
+  .tilesCard {
+    width: 38%;
+    height: 315px;
+    margin: 10px 10px;
+    padding: 20px;
+    float: left;
+    background-color: white;
+  }
+}
+
+@media all and (min-width: 1024px) {
+  .main {
+    flex: 5 0px;
+  }
+  .aside-1 {
+    order: 1;
+  }
+  .main {
+    order: 2;
+    display: block;
+  }
+  .tilesCard {
+    width: 18%;
+    height: 350px;
+    margin: 0 10px 10px 0;
+    padding: 20px;
+    float: left;
+    background-color: white;
+  }
+}
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  text-align: center;
+}
+
+.tilesCard img {
+  width: 179px;
+}
+.imgWrapper {
+  background-color: #f0efef;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.TilesLblTxt {
+  font-weight: bold;
+}
+.uniqueIdWrapper {
+  font-weight: bold;
+  color: #0465aa;
+}
+.footer {
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+body {
+  padding: 2em;
+  font-family: sans-serif;
+  background-color: #f2f2f2;
+}
+.assideFilterHeading {
+  text-align: left;
+  font-weight: 900;
+  padding-left: 5px;
+}
+.underLineHeading {
+  width: 80%;
+  border-bottom: 1px solid;
+  margin: auto;
+}
+
+.btn {
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border-color: #7cba01;
+  border-radius: 0.2em;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  text-decoration: none;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  width: 40%;
+  margin: 5%;
+}
+.btn:hover,
+.btn:focus {
+  color: black;
+  outline: 0;
+}
+
+.btnStyl {
+  color: black;
+  -webkit-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  background-color: #c5e09b;
+}
+.selectedBtn {
+  background-color: #7cba01;
+}
+.btnStyl:hover {
+  box-shadow: 0 0 10px 0 #90ee90 inset, 0 0 10px 4px #90ee90;
+}

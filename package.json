@@ -1,0 +1,61 @@
+{
+  "homepage": "https://vshekharjha.github.io/vsspacex",
+  "scripts": {
+    "webpack": "webpack -d",
+    "dev": "nodemon -e css,js,jsx,ejs,cjs,ts,json,mjs script.js",
+    "webpack-production": "NODE_ENV=production webpack -p",
+    "babel-production": "NODE_ENV=production COMPILER_ENV=server babel --out-dir dist --config-file ./.babelrc.server.json src",
+    "start": "node -r esm dist/server.js",
+    "build": "npm run webpack-production && npm run babel-production",
+    "test:lint": "eslint -c .eslintrc.js --ext .ts,.tsx",
+    "prettify": "prettier --config .prettierrc.yaml --write '{,!(node_modules)/**/}*.{js,ts,tsx,json}'",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "author": "vswebinnovator",
+  "license": "MIT",
+  "nodemonConfig": {
+    "ignore": [
+      "src/static/**/*"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/node": "^7.8.4",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/polyfill": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-react": "^7.8.3",
+    "@babel/register": "^7.9.0",
+    "@typescript-eslint/eslint-plugin": "^2.24.0",
+    "@typescript-eslint/parser": "^2.24.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-file-loader": "^2.0.0",
+    "babel-plugin-transform-require-ignore": "^0.1.1",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.5.3",
+    "eslint": "^6.8.0",
+    "eslint-plugin-prefer-arrow": "^1.1.7",
+    "eslint-plugin-unicorn": "^17.2.0",
+    "file-loader": "^6.0.0",
+    "gh-pages": "^3.1.0",
+    "html-webpack-plugin": "^4.3.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "nodemon": "^2.0.2",
+    "prettier": "^2.1.1",
+    "raw-loader": "^4.0.1",
+    "typescript": "^4.0.2",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "axios": "^0.20.0",
+    "compression": "^1.7.4",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "lodash": "^4.17.20",
+    "react": "^16.13.1",
+    "react-dom": "^16.12.0"
+  }
+}

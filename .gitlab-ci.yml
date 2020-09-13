@@ -1,0 +1,98 @@
+
+image: node:latest
+
+stages:
+    - install
+    - prebuild
+    - build
+    - test
+    - deploy
+    
+.yarn-cache:
+  cache:
+    policy: pull
+    key:
+      files:
+        - yarn.lock
+      prefix: yarn
+    paths:
+      - .yarn
+      - .yarn-offline-mirror
+
+.yarn-job:
+  extends: .yarn-cache
+  before_script:
+    - node --version
+    - yarn --version
+    - yarn config set yarn-offline-mirror $(pwd)/.yarn-offline-mirror
+    - yarn config set yarn-offline-mirror-pruning true
+    - yarn --prefer-offline --no-progress --pure-lockfile
+# ----------------------------------------------------------------------
+# Install, cache and fill offline-mirror
+# ----------------------------------------------------------------------
+install:
+  extends: .yarn-job
+  stage: install
+  cache:
+    policy: pull-push
+    key:
+      files:
+        - yarn.lock
+      prefix: yarn
+    paths:
+      - .yarn
+      - .yarn-offline-mirror
+  script:
+    - echo "Install only..."
+
+# ----------------------------------------------------------------------
+# static code quality checks and other prebuild activities
+# ----------------------------------------------------------------------
+eslint:
+  extends: .yarn-job
+  stage: prebuild
+  needs:
+    - job: install
+      artifacts: false
+  script:
+    - yarn run test:lint
+
+prettify:
+  extends: eslint
+  script:
+    - yarn prettify
+
+build_just_vsSpaceX:
+    stage: build
+    script:
+        - echo "just build"
+
+build_vsSpaceX:
+    stage: build
+    script:
+        - npm build
+    artifacts:
+        paths:
+            - vsspacex    
+        
+test_vsSpaceX:
+    stage: test
+    script:
+        - echo "just testing"
+        - npm run test
+
+deploy_vsSpacex:
+    stage: deploy
+    script:
+    - npm install
+    - npm run build
+    - rm -rf public
+    - mkdir .public
+    - cp -r * .public
+    - mv .public public
+    artifacts:
+      paths:
+      - public # mandatory, other folder won't work
+ 
+
+
