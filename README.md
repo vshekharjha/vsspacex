@@ -91,6 +91,12 @@ Express (SSR)
 tslint & prettify
 gitLab
 
+pipeline 
+  <img
+    alt="vsspacex DesktopView"
+    src="./readmeimg/pipeline.jpg"
+    align="left"
+  />
 
 Screenshot of Different View Desktop , Tablet View and Mobile View
   <img
